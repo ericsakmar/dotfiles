@@ -25,3 +25,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 
 call plug#end()
+
+" mappings
+" ctrl+s to :w
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
