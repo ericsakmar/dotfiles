@@ -31,3 +31,7 @@ call plug#end()
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
+set ruler
+set backupdir=~/.tmp
+set directory=~/.tmp
+
