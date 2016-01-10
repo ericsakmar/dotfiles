@@ -9,7 +9,9 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
+set relativenumber
 set number
+set hls
 
 call plug#begin('~/.vim/plugged')
 
@@ -41,4 +43,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 set ruler
+set hidden
+
+" leader commands
+let mapleader = ","
+map <Leader>l oconsole.log 
 
