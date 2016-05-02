@@ -1,7 +1,6 @@
 " Solarized Dark
 syntax enable
-set background=dark
-colorscheme solarized
+colorscheme jellybeans
 
 " Indenting 
 set autoindent
