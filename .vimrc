@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
 " tools
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " web
