@@ -1,6 +1,7 @@
 " Solarized Dark
 syntax enable
-colorscheme jellybeans
+let g:onedark_termcolors=16
+colorscheme onedark
 
 " Indenting 
 set autoindent
@@ -19,6 +20,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sheerun/vim-polyglot'
 
 " web
 Plug 'kchmck/vim-coffee-script'
