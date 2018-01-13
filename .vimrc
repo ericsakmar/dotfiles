@@ -1,6 +1,7 @@
 syntax enable
 let g:onedark_termcolors=16
 colorscheme onedark
+let g:airline_theme='onedark'
 
 " Indenting 
 set autoindent
@@ -10,16 +11,14 @@ set softtabstop=2
 
 set relativenumber
 set number
-set hls
 
 call plug#begin('~/.vim/plugged')
 
 " tools
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'sheerun/vim-polyglot'
+Plug 'samsonw/vim-task'
+Plug 'vim-airline/vim-airline'
 
 " web
 Plug 'kchmck/vim-coffee-script'
@@ -27,6 +26,8 @@ Plug 'digitaltoad/vim-jade'
 Plug 'wavded/vim-stylus'
 Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
+Plug 'posva/vim-vue'
+Plug 'elmcast/elm-vim'
 
 call plug#end()
 
@@ -49,4 +50,5 @@ set hidden
 " leader commands
 let mapleader = ","
 map <Leader>l oconsole.log 
-
+nmap <leader>vr :e $MYVIMRC<cr>
+nmap <leader>so :source $MYVIMRC<cr>
