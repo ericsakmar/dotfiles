@@ -2,6 +2,7 @@ syntax enable
 let g:onedark_termcolors=16
 colorscheme onedark
 let g:airline_theme='onedark'
+let g:airline#extensions#tabline#enabled = 1
 
 " Indenting 
 set autoindent
@@ -19,6 +20,7 @@ Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'samsonw/vim-task'
 Plug 'vim-airline/vim-airline'
+Plug 'prettier/vim-prettier'
 
 " web
 Plug 'kchmck/vim-coffee-script'
