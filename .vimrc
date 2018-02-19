@@ -1,17 +1,23 @@
 syntax enable
+set encoding=utf8
 let g:onedark_termcolors=16
 colorscheme onedark
+set laststatus=2
 let g:airline_theme='onedark'
 let g:airline#extensions#tabline#enabled = 1
-
-" Indenting 
 set autoindent
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-
 set relativenumber
 set number
+set colorcolumn=80
+set listchars=tab:->,trail:-
+set list
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
 
 call plug#begin('~/.vim/plugged')
 
@@ -51,6 +57,7 @@ set hidden
 
 " leader commands
 let mapleader = ","
-map <Leader>l oconsole.log 
 nmap <leader>vr :e $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
+nmap <leader>h :nohlsearch
+imap <Leader>l oconsole.log();<esc>hi
