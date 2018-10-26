@@ -1,10 +1,5 @@
 syntax enable
 set encoding=utf8
-let g:onedark_termcolors=16
-colorscheme onedark
-set laststatus=2
-let g:airline_theme='onedark'
-let g:airline#extensions#tabline#enabled = 1
 set autoindent
 set expandtab
 set shiftwidth=2
@@ -19,14 +14,27 @@ set hlsearch
 set ignorecase
 set smartcase
 
+set background=dark
+let g:one_allow_italics=1
+colorscheme one
+
+set macligatures
+set guifont=Fira\ Code:h18
+
+set laststatus=2
+let g:airline_theme='onedark'
+let g:airline#extensions#tabline#enabled = 1
+
 call plug#begin('~/.vim/plugged')
 
 " tools
-Plug 'tpope/vim-commentary'
+Plug 'christoomey/vim-sort-motion'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'samsonw/vim-task'
-Plug 'vim-airline/vim-airline'
 Plug 'prettier/vim-prettier'
+Plug 'samsonw/vim-task'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
 
 " web
 Plug 'kchmck/vim-coffee-script'
@@ -36,6 +44,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 Plug 'posva/vim-vue'
 Plug 'elmcast/elm-vim'
+
+Plug 'rakr/vim-one'
 
 call plug#end()
 
@@ -59,5 +69,5 @@ set hidden
 let mapleader = ","
 nmap <leader>vr :e $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
-nmap <leader>h :nohlsearch
-imap <Leader>l oconsole.log();<esc>hi
+nmap <leader>h :nohlsearch<cr>
+imap <leader>l console.log();<esc>hi
