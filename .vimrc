@@ -19,10 +19,8 @@ set background=dark
 let g:one_allow_italics=1
 colorscheme one
 
-if has('macligatures')
-  set macligatures
-  set guifont=Fira\ Code:h18
-endif
+set macligatures
+set guifont=Fira\ Code:h18
 
 " ctrl p
 set wildignore+=*/node_modules/*
@@ -43,6 +41,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 " Plug 'samsonw/vim-task'
 " Plug 'tpope/vim-repeat'
+Plug 'sheerun/vim-polyglot'
+Plug 'w0rp/ale'
 
 " web
 Plug 'kchmck/vim-coffee-script'
