@@ -19,10 +19,10 @@ set background=dark
 let g:one_allow_italics=1
 colorscheme one
 
-if has('macligatures')
+" if has('macligatures')
   set macligatures
   set guifont=Fira\ Code:h18
-endif
+" endif
 
 " ctrl p
 set wildignore+=*/node_modules/*
@@ -42,13 +42,17 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 " Plug 'samsonw/vim-task'
-" Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
+Plug 'lilydjwg/colorizer'
+Plug 'luochen1990/rainbow'
+Plug 'RRethy/vim-illuminate'
+Plug 'inside/vim-search-pulse'
+Plug 'sheerun/vim-polyglot'
 
 " web
 Plug 'kchmck/vim-coffee-script'
 Plug 'digitaltoad/vim-jade'
 Plug 'wavded/vim-stylus'
-Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 Plug 'posva/vim-vue'
 Plug 'elmcast/elm-vim'
@@ -71,6 +75,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+map 0 ^
+
 set ruler
 set hidden
 
@@ -81,6 +87,7 @@ nmap <leader>so :source $MYVIMRC<cr>
 nmap <leader>h :nohlsearch<cr>
 map <leader>light <esc>:set background=light<cr>
 map <leader>dark <esc>:set background=dark<cr>
+nnoremap <leader>ls :ls<cr>:b<space>
 
 " folding
 nmap <leader>ff zfap<cr>
