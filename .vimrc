@@ -88,11 +88,12 @@ nmap <leader>fu za<cr>
 
 " consider moving this to a function/plugin
 " and switch on file type
-imap <Leader>l console.log()<esc>i
+inoremap <Leader>l console.log()<esc>i
 nmap <Leader>d yiwoconsole.log(<esc>pa)<esc>
 
 " something I may use later
 "nmap <leader>rs <esc>:e <C-r>=escape(expand('%:r:r'), ' ') . '.spec.tsx'
+nnoremap <Leader>rr /render()<cr>zz
 
 " something else for folds
 augroup AutoSaveFolds
@@ -100,3 +101,8 @@ augroup AutoSaveFolds
   autocmd BufWinLeave * mkview
   autocmd BufWinEnter * silent loadview
 augroup END
+
+" prettier
+" let g:prettier#quickfix_enabled = 0
+" let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
