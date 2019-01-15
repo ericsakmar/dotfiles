@@ -91,9 +91,14 @@ nmap <leader>fu za<cr>
 inoremap <Leader>l console.log()<esc>i
 nmap <Leader>d yiwoconsole.log(<esc>pa)<esc>
 
-" something I may use later
-"nmap <leader>rs <esc>:e <C-r>=escape(expand('%:r:r'), ' ') . '.spec.tsx'
+" react helpers
 nnoremap <Leader>rr /render()<cr>zz
+
+" ts helpers
+nnoremap <leader>ti <esc>:e <C-r>=escape(expand('%:p:h'), ' ') . '/index.ts'<cr><cr>
+
+" getting around
+nnoremap <Leader>rd :cd Dev/rubicon/src<cr>
 
 " something else for folds
 augroup AutoSaveFolds
@@ -103,6 +108,6 @@ augroup AutoSaveFolds
 augroup END
 
 " prettier
-" let g:prettier#quickfix_enabled = 0
-" let g:prettier#autoformat = 0
+let g:prettier#quickfix_enabled = 0
+let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
