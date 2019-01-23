@@ -52,6 +52,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 Plug 'posva/vim-vue'
 Plug 'elmcast/elm-vim'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " colors
 Plug 'rakr/vim-one'
@@ -93,6 +94,8 @@ nmap <Leader>d yiwoconsole.log(<esc>pa)<esc>
 
 " react helpers
 nnoremap <Leader>rr /render()<cr>zz
+nnoremap <leader>ra <esc>:e <C-r>=escape(expand('%:p:h:h'), ' ') . '/actions/' . expand('%:t')<cr><cr>
+nnoremap <leader>re <esc>:e <C-r>=escape(expand('%:p:h:h'), ' ') . '/epics/' . expand('%:t')<cr><cr>
 
 " ts helpers
 nnoremap <leader>ti <esc>:e <C-r>=escape(expand('%:p:h'), ' ') . '/index.ts'<cr><cr>
@@ -109,5 +112,4 @@ augroup END
 
 " prettier
 let g:prettier#quickfix_enabled = 0
-let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
