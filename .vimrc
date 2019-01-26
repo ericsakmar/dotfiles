@@ -34,28 +34,30 @@ let g:airline#extensions#tabline#enabled = 1
 call plug#begin('~/.vim/plugged')
 
 " tools
+Plug 'RRethy/vim-illuminate'
 Plug 'christoomey/vim-sort-motion'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'prettier/vim-prettier'
-Plug 'samsonw/vim-task'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-" Plug 'samsonw/vim-task'
-Plug 'tpope/vim-repeat'
+Plug 'inside/vim-search-pulse'
 Plug 'lilydjwg/colorizer'
 Plug 'luochen1990/rainbow'
-Plug 'RRethy/vim-illuminate'
-Plug 'inside/vim-search-pulse'
+Plug 'prettier/vim-prettier'
+Plug 'samsonw/vim-task'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
+" Plug 'samsonw/vim-task'
 
 " web
-Plug 'kchmck/vim-coffee-script'
 Plug 'digitaltoad/vim-jade'
-Plug 'wavded/vim-stylus'
-Plug 'elzr/vim-json'
-Plug 'posva/vim-vue'
 Plug 'elmcast/elm-vim'
+Plug 'elzr/vim-json'
+Plug 'kchmck/vim-coffee-script'
+Plug 'posva/vim-vue'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'wavded/vim-stylus'
 
 " colors
 Plug 'rakr/vim-one'
@@ -95,11 +97,19 @@ nmap <leader>fu za<cr>
 
 " consider moving this to a function/plugin
 " and switch on file type
-imap <Leader>l console.log()<esc>i
+inoremap <Leader>l console.log()<esc>i
 nmap <Leader>d yiwoconsole.log(<esc>pa)<esc>
 
-" something I may use later
-"nmap <leader>rs <esc>:e <C-r>=escape(expand('%:r:r'), ' ') . '.spec.tsx'
+" react helpers
+nnoremap <Leader>rr /render()<cr>zz
+nnoremap <leader>ra <esc>:e <C-r>=escape(expand('%:p:h:h'), ' ') . '/actions/' . expand('%:t')<cr><cr>
+nnoremap <leader>re <esc>:e <C-r>=escape(expand('%:p:h:h'), ' ') . '/epics/' . expand('%:t')<cr><cr>
+
+" ts helpers
+nnoremap <leader>ti <esc>:e <C-r>=escape(expand('%:p:h'), ' ') . '/index.ts'<cr><cr>
+
+" getting around
+nnoremap <Leader>rd :cd Dev/rubicon/src<cr>
 
 " something else for folds
 augroup AutoSaveFolds
@@ -107,3 +117,7 @@ augroup AutoSaveFolds
   autocmd BufWinLeave * mkview
   autocmd BufWinEnter * silent loadview
 augroup END
+
+" prettier
+let g:prettier#quickfix_enabled = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
