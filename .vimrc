@@ -101,7 +101,7 @@ nnoremap <leader>re <esc>:e <C-r>=escape(expand('%:p:h:h'), ' ') . '/epics/' . e
 nnoremap <leader>ti <esc>:e <C-r>=escape(expand('%:p:h'), ' ') . '/index.ts'<cr><cr>
 
 " getting around
-nnoremap <Leader>rd :cd Dev/rubicon/src<cr>
+nnoremap <Leader>rd :cd Dev/rubicon/editor/src<cr>
 
 " something else for folds
 augroup AutoSaveFolds
