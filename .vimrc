@@ -19,8 +19,10 @@ set background=dark
 let g:one_allow_italics=1
 colorscheme one
 
-set macligatures
-set guifont=Fira\ Code:h18
+" if has('macligatures')
+  set macligatures
+  set guifont=Fira\ Code:h18
+" endif
 
 " ctrl p
 set wildignore+=*/node_modules/*
@@ -32,27 +34,30 @@ let g:airline#extensions#tabline#enabled = 1
 call plug#begin('~/.vim/plugged')
 
 " tools
+Plug 'RRethy/vim-illuminate'
 Plug 'christoomey/vim-sort-motion'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'inside/vim-search-pulse'
+Plug 'lilydjwg/colorizer'
+Plug 'luochen1990/rainbow'
 Plug 'prettier/vim-prettier'
 Plug 'samsonw/vim-task'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-" Plug 'samsonw/vim-task'
-" Plug 'tpope/vim-repeat'
-Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
+" Plug 'samsonw/vim-task'
 
 " web
-Plug 'kchmck/vim-coffee-script'
 Plug 'digitaltoad/vim-jade'
-Plug 'wavded/vim-stylus'
-Plug 'pangloss/vim-javascript'
-Plug 'elzr/vim-json'
-Plug 'posva/vim-vue'
 Plug 'elmcast/elm-vim'
+Plug 'elzr/vim-json'
+Plug 'kchmck/vim-coffee-script'
+Plug 'posva/vim-vue'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'wavded/vim-stylus'
 
 " colors
 Plug 'rakr/vim-one'
@@ -72,6 +77,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+map 0 ^
+
 set ruler
 set hidden
 
@@ -82,6 +89,7 @@ nmap <leader>so :source $MYVIMRC<cr>
 nmap <leader>h :nohlsearch<cr>
 map <leader>light <esc>:set background=light<cr>
 map <leader>dark <esc>:set background=dark<cr>
+nnoremap <leader>ls :ls<cr>:b<space>
 
 " folding
 nmap <leader>ff zfap<cr>
