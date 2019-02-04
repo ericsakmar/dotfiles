@@ -30,6 +30,7 @@ set wildignore+=*/node_modules/*
 set laststatus=2
 let g:airline_theme='one'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 call plug#begin('~/.vim/plugged')
 
@@ -42,13 +43,14 @@ Plug 'lilydjwg/colorizer'
 Plug 'luochen1990/rainbow'
 Plug 'prettier/vim-prettier'
 Plug 'samsonw/vim-task'
+Plug 'samsonw/vim-task'
+Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
-" Plug 'samsonw/vim-task'
 
 " web
 Plug 'digitaltoad/vim-jade'
@@ -110,6 +112,9 @@ nnoremap <leader>ti <esc>:e <C-r>=escape(expand('%:p:h'), ' ') . '/index.ts'<cr>
 
 " getting around
 nnoremap <Leader>rd :cd Dev/rubicon/editor/src<cr>
+
+" nerd tree
+nnoremap <Leader>nt <esc>:NERDTree<cr>
 
 " something else for folds
 augroup AutoSaveFolds
