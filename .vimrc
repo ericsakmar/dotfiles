@@ -25,7 +25,7 @@ colorscheme one
 " endif
 
 " ctrl p
-set wildignore+=*/node_modules/*
+set wildignore+=*/node_modules/*,*/dist/*,*/release/*
 
 set laststatus=2
 let g:airline_theme='one'
@@ -35,22 +35,24 @@ let g:airline_powerline_fonts = 1
 call plug#begin('~/.vim/plugged')
 
 " tools
-Plug 'RRethy/vim-illuminate'
+" Plug 'RRethy/vim-illuminate'
 Plug 'christoomey/vim-sort-motion'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'inside/vim-search-pulse'
+" Plug 'inside/vim-search-pulse'
 Plug 'lilydjwg/colorizer'
-Plug 'luochen1990/rainbow'
+" Plug 'luochen1990/rainbow'
 Plug 'prettier/vim-prettier'
-Plug 'samsonw/vim-task'
-Plug 'samsonw/vim-task'
+" Plug 'samsonw/vim-task'
 Plug 'scrooloose/nerdtree'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
+Plug 'sirver/UltiSnips'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
+" Plug 'junegunn/goyo.vim'
+Plug 'leafgarland/typescript-vim'
 
 " web
 Plug 'digitaltoad/vim-jade'
@@ -92,6 +94,7 @@ nmap <leader>h :nohlsearch<cr>
 map <leader>light <esc>:set background=light<cr>
 map <leader>dark <esc>:set background=dark<cr>
 nnoremap <leader>ls :ls<cr>:b<space>
+nnoremap <leader>t <ESC>:call Toggle_task_status()<CR>
 
 " folding
 nmap <leader>ff zfap<cr>
@@ -126,3 +129,9 @@ augroup END
 " prettier
 let g:prettier#quickfix_enabled = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+" snips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetDirectories=[ $HOME . '/.vim/UltiSnips' ]

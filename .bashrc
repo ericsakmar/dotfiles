@@ -4,11 +4,12 @@ alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 alias gb='git branch'
-alias gc='git checkout'
+alias gca='git commit -a'
 alias gcam='git commit -a -m'
 alias gd='git diff'
 alias grb='git rebase -i master'
 alias gs='git status'
+alias gac='git add . && git rebase --continue'
 
 alias y='yarn'
 
