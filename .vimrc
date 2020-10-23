@@ -14,57 +14,44 @@ set hlsearch
 set ignorecase
 set smartcase
 
-set termguicolors
 set background=dark
 let g:one_allow_italics=1
 colorscheme one
 
-" if has('macligatures')
-  set macligatures
-  set guifont=Fira\ Code:h18
-" endif
+set macligatures
+set guifont=Fira\ Code:h16
 
 " ctrl p
 set wildignore+=*/node_modules/*,*/dist/*,*/release/*
 
 set laststatus=2
-let g:airline_theme='one'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 call plug#begin('~/.vim/plugged')
 
 " tools
-" Plug 'RRethy/vim-illuminate'
 Plug 'christoomey/vim-sort-motion'
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'inside/vim-search-pulse'
 Plug 'lilydjwg/colorizer'
-" Plug 'luochen1990/rainbow'
+Plug 'mileszs/ack.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
 Plug 'prettier/vim-prettier'
-" Plug 'samsonw/vim-task'
-Plug 'scrooloose/nerdtree'
-" Plug 'sheerun/vim-polyglot'
-Plug 'sirver/UltiSnips'
+Plug 'qpkorr/vim-bufkill'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
-" Plug 'junegunn/goyo.vim'
-Plug 'leafgarland/typescript-vim'
 
 " web
-Plug 'digitaltoad/vim-jade'
-Plug 'elmcast/elm-vim'
-Plug 'elzr/vim-json'
-Plug 'kchmck/vim-coffee-script'
-Plug 'posva/vim-vue'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'wavded/vim-stylus'
 
 " colors
 Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -94,7 +81,12 @@ nmap <leader>h :nohlsearch<cr>
 map <leader>light <esc>:set background=light<cr>
 map <leader>dark <esc>:set background=dark<cr>
 nnoremap <leader>ls :ls<cr>:b<space>
-nnoremap <leader>t <ESC>:call Toggle_task_status()<CR>
+
+" goto
+nmap <leader>d <Plug>(coc-definition)
+nmap <leader>y <Plug>(coc-type-definition)
+nmap <leader>i <Plug>(coc-implementation)
+nmap <leader>r <Plug>(coc-references)
 
 " folding
 nmap <leader>ff zfap<cr>
@@ -105,19 +97,18 @@ nmap <leader>fu za<cr>
 inoremap <Leader>l console.log()<esc>i
 nmap <Leader>d yiwoconsole.log(<esc>pa)<esc>
 
-" react helpers
-nnoremap <Leader>rr /render()<cr>zz
-nnoremap <leader>ra <esc>:e <C-r>=escape(expand('%:p:h:h'), ' ') . '/actions/' . expand('%:t')<cr><cr>
-nnoremap <leader>re <esc>:e <C-r>=escape(expand('%:p:h:h'), ' ') . '/epics/' . expand('%:t')<cr><cr>
-
 " ts helpers
 nnoremap <leader>ti <esc>:e <C-r>=escape(expand('%:p:h'), ' ') . '/index.ts'<cr><cr>
 
-" getting around
-nnoremap <Leader>rd :cd Dev/rubicon/editor/src<cr>
-
 " nerd tree
-nnoremap <Leader>nt <esc>:NERDTree<cr>
+nnoremap <Leader>t <esc>:NERDTreeToggle<cr>
+
+" ack
+nnoremap <Leader>a :Ack!<Space>
+
+" buffers
+nnoremap <silent><TAB> :bn<CR>
+nnoremap <silent><S-TAB> :bp<CR>
 
 " something else for folds
 augroup AutoSaveFolds
@@ -131,7 +122,10 @@ let g:prettier#quickfix_enabled = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " snips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetDirectories=[ $HOME . '/.vim/UltiSnips' ]
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsSnippetDirectories=[ $HOME . '/.vim/UltiSnips' ]
+
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
+au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
