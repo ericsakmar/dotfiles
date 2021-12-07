@@ -82,11 +82,11 @@ map <leader>light <esc>:set background=light<cr>
 map <leader>dark <esc>:set background=dark<cr>
 nnoremap <leader>ls :ls<cr>:b<space>
 
-" goto
 nmap <leader>d <Plug>(coc-definition)
 nmap <leader>y <Plug>(coc-type-definition)
 nmap <leader>i <Plug>(coc-implementation)
 nmap <leader>r <Plug>(coc-references)
+nmap <leader>oi :call CocAction('runCommand', 'tsserver.organizeImports')<cr>
 
 " folding
 nmap <leader>ff zfap<cr>
@@ -112,9 +112,18 @@ nnoremap <silent><S-TAB> :bp<CR>
 
 " something else for folds
 augroup AutoSaveFolds
+  " previously...
+  " autocmd!
+  " autocmd BufWinLeave * mkview
+  " autocmd BufWinEnter * silent loadview
+
+  " a better version to try...
   autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent loadview
+  " view files are about 500 bytes
+  " bufleave but not bufwinleave captures closing 2nd tab
+  " nested is needed by bufwrite* (if triggered via other autocmd)
+  autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
+  autocmd BufWinEnter ?* silent! loadview
 augroup END
 
 " prettier
