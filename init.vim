@@ -104,7 +104,7 @@ augroup MINE
   autocmd!
   autocmd BufWritePre *.js Neoformat
   autocmd BufWritePre *.html Neoformat
-  autocmd BufWritePre *.cs lua vim.lsp.buf.formatting()
+  autocmd BufWritePre *.cs lua vim.lsp.buf.formatting_sync()
 augroup END
 
 " copied from onedark
