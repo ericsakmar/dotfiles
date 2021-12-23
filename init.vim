@@ -197,7 +197,7 @@ require'lspconfig'.tsserver.setup {
 }
 
 local pid = vim.fn.getpid()
-local omnisharp_bin = "/Users/ericsakmar/Desktop/omnisharp-osx/run"
+local omnisharp_bin = "/Users/ericsakmar/Applications/omnisharp-osx/run"
 require'lspconfig'.omnisharp.setup{
   cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
   on_attach = on_attach,
@@ -248,3 +248,6 @@ require('nvim-tree').setup {
 }
 EOF
 
+
+" because I always forget how to do this:
+" ln -s ~/Dev/dotfiles/init.vim ~/.config/nvim/init.vim
