@@ -33,24 +33,24 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'folke/trouble.nvim'
 Plug 'glepnir/lspsaga.nvim'
-Plug 'shadmansaleh/lualine.nvim'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
+Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'rakr/vim-one'
 Plug 'sbdchd/neoformat'
-Plug 'tpope/vim-commentary'
+Plug 'shadmansaleh/lualine.nvim'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
@@ -74,7 +74,7 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <silent><TAB> :bn<CR>
 nnoremap <silent><S-TAB> :bp<CR>
 
-let mapleader = ","
+let mapleader = " "
 
 " telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -115,20 +115,11 @@ hi LspDiagnosticsVirtualTextHint guifg=#61afef gui=bold
 
 lua << EOF
 
--- Setup nvim-cmp.
 local cmp = require'cmp'
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      -- For `vsnip` user.
-      -- vim.fn["vsnip#anonymous"](args.body)
-
-      -- For `luasnip` user.
-      -- require('luasnip').lsp_expand(args.body)
-
-      -- For `ultisnips` user.
-      -- vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
   mapping = {
@@ -140,23 +131,11 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' },
-
-    -- For vsnip user.
-    -- { name = 'vsnip' },
-
-    -- For luasnip user.
-    -- { name = 'luasnip' },
-
-    -- For ultisnips user.
-    -- { name = 'ultisnips' },
-
     { name = 'buffer' },
   }
 })
 
 require("bufferline").setup{}
-
-
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -229,14 +208,9 @@ require("trouble").setup { }
 require('lualine').setup{ options = {theme = 'onedark'} }
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
   highlight = {
-    enable = true,              -- false will disable the whole extension
-    -- disable = { "c", "rust" },  -- list of language that will be disabled
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
+    enable = true,
     additional_vim_regex_highlighting = false,
   },
 }
@@ -246,6 +220,9 @@ require('nvim-tree').setup {
     width = 60,
   }
 }
+
+require('Comment').setup()
+
 EOF
 
 
